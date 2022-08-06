@@ -1,3 +1,4 @@
+import models.Cart;
 import models.Item;
 
 public class Main {
@@ -8,10 +9,11 @@ public class Main {
         Item spinach = new Item("Spinach", 0.99);
         Item coriander = new Item("Coriander", 1.29);
 
-        System.out.println(celery);
-        System.out.println(spinach);
-        System.out.println(coriander);
-    
+        Cart cart = new Cart();
+        cart.add(celery);
+        cart.add(spinach);
+        cart.add(coriander);
+        System.out.println(cart);
     }
 
     /**
