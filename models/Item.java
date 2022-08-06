@@ -6,6 +6,12 @@ public class Item {
   
 
     public Item(String name, double price){
+        if (name == null || name.isBlank()){
+            throw new IllegalArgumentException("name cannot be null or blank");
+        }
+        if (price < 0){
+            throw new IllegalArgumentException("price cannot be less than 0");
+        }
         this.name = name;
         this.price = price;
     }
@@ -24,10 +30,16 @@ public class Item {
     }
     
     public void setName(String name) {
+        if (name == null || name.isBlank()){
+            throw new IllegalArgumentException("name cannot be null or blank");
+        }
         this.name = name;
     }
 
     public void setPrice(double price) {
+        if (price < 0){
+            throw new IllegalArgumentException("cannot be less than zero");
+        }
         this.price = price;
     }
 
