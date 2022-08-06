@@ -19,15 +19,6 @@ public class Cart {
         this.items.set(index, new Item(item));
     }
 
-
-   /**
-    * Name: add
-    * @param item
-    * @return boolean
-    *
-    * Inside the function:
-    *   1. Adds an item to the cart if it wasn't already added.
-    */
     public boolean add(Item item){
         this.items.add(new Item(item));
         return true;
@@ -41,21 +32,34 @@ public class Cart {
         }
     }
 
- 
-  
-   /**
-    *  Name: checkout
-    *  @return (String)
-    *
-    *  Inside the function:
-    *   1. Calculates the subtotal (price before tax).
-    *   2. Calculates the tax (assume tax is 13%).
-    *   3. Calculates total: subtotal + tax
-    *   4. Returns a String that resembles a receipt. See below.
-    */
-
     public String checkout(){
-        
+        double [] checkout = new double[3];
+        for (int i = 0; i < this.items.size(); i++) {
+            //looping through cart getting subtotal adding it as first element
+            checkout[0] += items.get(i).getPrice();
+            
+        }
+        //using subtotal to get the the tax
+        checkout[1] = checkout[0] * 0.13;
+        //calculating total after tax
+        checkout[2] = checkout[1] + checkout[0];
+        return 
+        "\tRECEIPT\n\n" +
+        "\tSubtotal: $" + checkout[0] + "\n" +
+        "\tTax: $" + checkout[1] + "\n" +
+        "\tTotal: $" + checkout[2] + "\n";
+
+    }
+
+    @Override
+    public String toString() {
+        String temp = "";
+        for (int i = 0; i < items.size(); i++) {
+            temp += items.get(i).toString();
+            temp += "\n";
+            
+        }
+        return temp;
     }
     
 }
