@@ -6,12 +6,8 @@ public class Item {
   
 
     public Item(String name, double price){
-        if (name == null || name.isBlank()){
-            throw new IllegalArgumentException("name cannot be null or blank");
-        }
-        if (price < 0){
-            throw new IllegalArgumentException("price cannot be less than 0");
-        }
+       checkName(name);
+       checkPrice(price);
         this.name = name;
         this.price = price;
     }
@@ -30,16 +26,12 @@ public class Item {
     }
     
     public void setName(String name) {
-        if (name == null || name.isBlank()){
-            throw new IllegalArgumentException("name cannot be null or blank");
-        }
+        checkName(name);
         this.name = name;
     }
 
     public void setPrice(double price) {
-        if (price < 0){
-            throw new IllegalArgumentException("cannot be less than zero");
-        }
+       checkPrice(price);
         this.price = price;
     }
 
@@ -47,5 +39,17 @@ public class Item {
     public String toString() {
         return name + ": $" + price + " ";
 
+    }
+
+    public void checkPrice(double price){
+        if (price < 0){
+            throw new IllegalArgumentException("cannot be less than zero");
+        }
+    }
+
+    public void checkName(String name){
+        if (name.isBlank() || name == null){
+            throw new IllegalArgumentException("cannot be null or blank");
+        }
     }
 }
