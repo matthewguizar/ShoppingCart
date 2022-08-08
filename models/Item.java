@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Item {
     private String name;
     private double price;
@@ -49,6 +51,7 @@ public class Item {
     }
     //equal objects must have the same HashCode or will lead to bugs when dealing with hash based collections
     public int hashCode() {
+        return Objects.hash(name, price);
         
     }
 
