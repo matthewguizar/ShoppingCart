@@ -47,6 +47,10 @@ public class Item {
         return this.name.equals(item.name) &&
         this.price == item.price;
     }
+    //equal objects must have the same HashCode or will lead to bugs when dealing with hash based collections
+    public int hashCode() {
+        
+    }
 
     @Override
     public String toString() {
