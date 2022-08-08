@@ -11,6 +11,7 @@ public class Main {
 
         Cart cart = new Cart();
         cart.add(celery);
+        cart.add(celery);
         cart.add(spinach);
         cart.add(coriander);
         System.out.println(cart);

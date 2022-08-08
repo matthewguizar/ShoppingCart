@@ -20,6 +20,9 @@ public class Cart {
     }
 
     public boolean add(Item item){
+        if (items.contains(item)){
+            return false;
+        }
         this.items.add(new Item(item));
         return true;
     }
