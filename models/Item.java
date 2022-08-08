@@ -36,6 +36,19 @@ public class Item {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (!(obj instanceof Item)){
+            return false;
+        }
+        Item item = (Item) obj;
+        return this.name.equals(item.name) &&
+        this.price == item.price;
+    }
+
+    @Override
     public String toString() {
         return name + ": $" + price + " ";
 
