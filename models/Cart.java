@@ -28,6 +28,9 @@ public class Cart {
     }
 
     public void remove(String name){
+        if (items.isEmpty()){
+            throw new IllegalStateException("no items to remove");
+        }
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getName().equals(name)){
                 items.remove(i);
@@ -36,6 +39,9 @@ public class Cart {
     }
 
     public String checkout(){
+        if(items.isEmpty()){
+            throw new IllegalStateException("cart is empty");
+        }
         double [] checkout = new double[3];
         for (int i = 0; i < this.items.size(); i++) {
             //looping through cart getting subtotal adding it as first element
