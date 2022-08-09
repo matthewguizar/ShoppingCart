@@ -63,7 +63,8 @@ public class Main {
                 cart.remove(name);
                 System.out.println(name + "was removed from cart");
                 break;
-                case "c": cart.checkout();
+                case "c": System.out.println(cart.checkout());
+                scan.close();
                 break;
 
             }
