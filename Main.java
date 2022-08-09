@@ -51,6 +51,7 @@ public class Main {
                 //using nextline after next int to avoid trap
                 scan.nextLine();
                 Item item = store.getItems(row, column);
+                //if the item isn't not added to cart because add returns true or false
                if( !(cart.add(item)) ){
                     System.out.println("item already in cart");
                } else {
