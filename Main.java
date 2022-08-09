@@ -68,6 +68,7 @@ public class Main {
                 //using return to end loop because if someone checkouts it should end it.
                 //since its method is void nothing comes after return
                 return;
+                default: continue;
 
             }
             System.out.println("\n\nShopping Cart\n\n " + cart);
