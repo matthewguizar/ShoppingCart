@@ -13,15 +13,11 @@ public class Main {
     public static void main(String[] args) {
         try {
             loadItems("products.txt");
-
+            manageItems();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
        
-
-        System.out.println("\n\t******************************JAVA GROCERS******************************\n");
-
-        System.out.println(store + "\n");
        
     }
 
@@ -36,22 +32,35 @@ public class Main {
      *   •          case c: prints the receipt and closes Scanner.
      *   •        Prints the updated shopping cart.
      */
+    public static void manageItems(){
+        Scanner scan = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n\t******************************JAVA GROCERS******************************\n");
+            System.out.println(store + "\n");
+
+            System.out.println("Options: \n\ta) Add to cart\n\tb) Remove from cart \n\tc) Checkout");
+            String choice = scan.nextLine();
+            switch (choice){
+                case "a": System.out.println("\nchoose an aisle between 1 - 7: ");
+                int row = scan.nextInt();
+                //to avoid nextLine trap adding throw away nextline
+                scan.nextLine();
+                System.out.println("choose an item number between 1-3: ");
+                //subtracting one because arrays are indexed at zero
+                int column = scan.nextInt() - 1;
+                //using nextline after next int to avoid trap
+                scan.nextLine();
+                cart.add(store.getItems(row, column));
+                
+                case "b":
+                case "c":
+
+            }
+        }
+    }
  
 
-    /**
-     * Name: loadItems
-     * @param fileName (String)
-     * @throws FileNotFoundException
-     *
-     * Inside the function:
-     *   1. loads items from <fileName>.txt.
-     *      • while loop runs through every line in <fileName>
-     *      • scan.nextLine() picks up the entire line.
-     *      • splits each String using the ";" separator.
-     *      • splits both fields in each String using the "=" separator.
-     *      • Parse each price into a Double.
-     *   2. adds all items to the store object's items field.
-     */
+  
     public static void loadItems(String fileName) throws FileNotFoundException{
         FileInputStream fis = new FileInputStream(fileName);
         Scanner scanFile = new Scanner(fis);
