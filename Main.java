@@ -65,7 +65,8 @@ public class Main {
                 break;
                 case "c": System.out.println(cart.checkout());
                 scan.close();
-                break;
+                //using return to end loop because if someone checkouts it should end it.
+                return;
 
             }
             System.out.println("\n\nShopping Cart\n\n " + cart);
