@@ -50,12 +50,19 @@ public class Main {
                 int column = scan.nextInt() - 1;
                 //using nextline after next int to avoid trap
                 scan.nextLine();
-                cart.add(store.getItems(row, column));
+                Item item = store.getItems(row, column);
+                cart.add(item);
+                System.out.println(item.getName() + " was added to your shopping cart.");
+                break;
                 
-                case "b":
+                case "b": System.out.println("enter the item you'd like to remove: ");
+                String name = scan.nextLine();
+                cart.remove(name);
+                break;
                 case "c":
 
             }
+            System.out.println("\n\nShopping Cart\n\n " + cart);
         }
     }
  
