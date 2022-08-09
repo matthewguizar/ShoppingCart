@@ -42,7 +42,7 @@ public class Main {
             String choice = scan.nextLine();
             switch (choice){
                 case "a": System.out.println("\nchoose an aisle between 1 - 7: ");
-                int row = scan.nextInt();
+                int row = scan.nextInt()-1;
                 //to avoid nextLine trap adding throw away nextline
                 scan.nextLine();
                 System.out.println("choose an item number between 1-3: ");
@@ -51,10 +51,12 @@ public class Main {
                 //using nextline after next int to avoid trap
                 scan.nextLine();
                 Item item = store.getItems(row, column);
-                cart.add(item);
-                System.out.println(item.getName() + " was added to your shopping cart.");
+               if( !(cart.add(item)) ){
+                    System.out.println("item already in cart");
+               } else {
+                   System.out.println(item.getName() + " was added to your shopping cart."); 
+                }
                 break;
-                
                 case "b": System.out.println("enter the item you'd like to remove: ");
                 String name = scan.nextLine();
                 cart.remove(name);
