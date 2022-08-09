@@ -59,12 +59,17 @@ public class Main {
                 String name = scan.nextLine();
                 cart.remove(name);
                 break;
-                case "c":
+                case "c": cart.checkout();
+                break;
 
             }
             System.out.println("\n\nShopping Cart\n\n " + cart);
+            System.out.println("Enter anything to continue: ");
+            scan.nextLine();
+            
         }
     }
+
  
 
   
