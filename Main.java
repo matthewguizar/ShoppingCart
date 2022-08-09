@@ -66,6 +66,7 @@ public class Main {
                 case "c": System.out.println(cart.checkout());
                 scan.close();
                 //using return to end loop because if someone checkouts it should end it.
+                //since its method is void nothing comes after return
                 return;
 
             }
