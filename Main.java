@@ -61,6 +61,7 @@ public class Main {
                 case "b": System.out.println("enter the item you'd like to remove: ");
                 String name = scan.nextLine();
                 cart.remove(name);
+                System.out.println(name + "was removed from cart");
                 break;
                 case "c": cart.checkout();
                 break;
