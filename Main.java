@@ -42,14 +42,24 @@ public class Main {
             String choice = scan.nextLine();
             switch (choice){
                 case "a": System.out.println("\nchoose an aisle between 1 - 7: ");
-                int row = scan.nextInt()-1;
+                //scanner checking if it has int if not throws 404;
+                //checking if a number it inputed
+                int row = scan.hasNextInt() ? scan.nextInt()-1 : 404;
                 //to avoid nextLine trap adding throw away nextline
                 scan.nextLine();
                 System.out.println("choose an item number between 1-3: ");
                 //subtracting one because arrays are indexed at zero
-                int column = scan.nextInt() - 1;
+                //checking if a number it inputed
+                int column = scan.hasNextInt() ? scan.nextInt() - 1 : 404;
                 //using nextline after next int to avoid trap
                 scan.nextLine();
+                
+                if (row == 404 || column == 404 ){
+                    continue;
+                    //checks if number passed is out of bounds of array
+                } else if (row < 0 || row > 6 ||column < 0 || column > 2){
+                    continue;
+                }
                 Item item = store.getItems(row, column);
                 //if the item isn't not added to cart because add returns true or false
                if( !(cart.add(item)) ){
@@ -58,12 +68,18 @@ public class Main {
                    System.out.println(item.getName() + " was added to your shopping cart."); 
                 }
                 break;
-                case "b": System.out.println("enter the item you'd like to remove: ");
+                case "b": if (cart.isEmpty()){
+                    continue;
+                }
+                System.out.println("enter the item you'd like to remove: ");
                 String name = scan.nextLine();
                 cart.remove(name);
                 System.out.println(name + "was removed from cart");
                 break;
-                case "c": System.out.println(cart.checkout());
+                case "c":  if (cart.isEmpty()){
+                    continue;
+                }
+                System.out.println(cart.checkout());
                 scan.close();
                 //using return to end loop because if someone checkouts it should end it.
                 //since its method is void nothing comes after return

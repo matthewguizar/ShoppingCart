@@ -27,6 +27,10 @@ public class Cart {
         return true;
     }
 
+    public boolean isEmpty(){
+        return this.items.isEmpty();
+    }
+
     public void remove(String name){
         if (items.isEmpty()){
             throw new IllegalStateException("no items to remove");
